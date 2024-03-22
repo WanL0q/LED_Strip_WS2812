@@ -19,7 +19,7 @@ Control WS2812 LED strip with STM32F103
 | byte[5]                 | Reserve       | _                       | 0x00                                   |
 | byte[6]                 | Reserve       | _                       | 0x00                                   |
 | byte[7]                 | Reserve       | _                       | 0x00                                   |
-# Led Strip configuration Frame
+# Led Strip Configuration Frame
 | **ID package**         | **Cycle(ms)** | **Receive-timeout(ms)** | **Data length** |
 |:----------------------:|:-------------:|:-----------------------:|:---------------:|
 | 0x02                   | -             | -                       | 0x08            |
