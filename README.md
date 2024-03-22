@@ -1,8 +1,9 @@
 # LED_Strip_WS2812
 Control WS2812 LED strip with STM32F103
-# 
 ![Screenshot 2024-03-22 084601](https://github.com/WanL0q/LED_Strip_WS2812/assets/134664967/3e64fd06-0365-4d2e-80c9-7bd812c33679)
-# Led Strip Command Frame
+
+# CAN Frames (Device ID: 0x2A)
+## Led Strip Command Frame
 
 | **ID package**          | **Cycle(ms)** | **Receive-timeout(ms)** | **Data length**                                                             |
 |:-----------------------:|:-------------:|:-----------------------:|:---------------------------------------------------------------------------:|
@@ -19,7 +20,7 @@ Control WS2812 LED strip with STM32F103
 | byte[5]                 | Reserve       | _                       | 0x00                                                                        |
 | byte[6]                 | Reserve       | _                       | 0x00                                                                        |
 | byte[7]                 | Reserve       | _                       | 0x00                                                                        |
-# Led Strip Configuration Frame
+## Led Strip Configuration Frame
 
 | **ID package**         | **Cycle(ms)** | **Receive-timeout(ms)** | **Data length** |
 |:----------------------:|:-------------:|:-----------------------:|:---------------:|
@@ -34,5 +35,5 @@ Control WS2812 LED strip with STM32F103
 | byte[6]                |Led_left       | unsigned int8           | [0,255]         |
 | byte[7]                |Led_flag       | unsigned int8           | [0,255]         |
 
-# Feedback
+## Led Strip Feedback Frame
 
