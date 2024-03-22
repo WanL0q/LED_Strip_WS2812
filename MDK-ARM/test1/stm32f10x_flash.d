@@ -1,0 +1,10 @@
+test1\stm32f10x_flash.o: C:\Users\longn\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\src\stm32f10x_flash.c
+test1\stm32f10x_flash.o: C:\Users\longn\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_flash.h
+test1\stm32f10x_flash.o: C:\Users\longn\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h
+test1\stm32f10x_flash.o: .\RTE\_test1\RTE_Components.h
+test1\stm32f10x_flash.o: ../Drivers/CMSIS/Include/core_cm3.h
+test1\stm32f10x_flash.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+test1\stm32f10x_flash.o: ../Drivers/CMSIS/Include/cmsis_version.h
+test1\stm32f10x_flash.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+test1\stm32f10x_flash.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+test1\stm32f10x_flash.o: C:\Users\longn\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h
