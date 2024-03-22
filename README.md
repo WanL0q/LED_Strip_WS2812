@@ -4,22 +4,23 @@ Control WS2812 LED strip with STM32F103
 ![Screenshot 2024-03-22 084601](https://github.com/WanL0q/LED_Strip_WS2812/assets/134664967/3e64fd06-0365-4d2e-80c9-7bd812c33679)
 # Led Strip Command Frame
 
-| **ID package**          | **Cycle(ms)** | **Receive-timeout(ms)** | **Data length** |
-|:-----------------------:|:-------------:|:-----------------------:|:---------------:|
-| 0x01                    | 100ms         | 500ms                   | 0x08            |
-| **Location**            |  **Function** | **Data type**           | **Description** |
-| byte[0]                 | Led mode      | bit[0,1]                | 0: normal<br>1: left<br>2: right<br>3: error |
-|                         |               | bit[2,3]                | 0: off<br>1: auto<br>2: manual<br>3: custom (bypass) |
-|                         |               | bit[4,5]                | Reserve                               |
-|                         |               | bit[6,7]                | Reserve                               |
+| **ID package**          | **Cycle(ms)** | **Receive-timeout(ms)** | **Data length**                                                             |
+|:-----------------------:|:-------------:|:-----------------------:|:---------------------------------------------------------------------------:|
+| 0x01                    | 100ms         | 500ms                   | 0x08                                                                        |
+| **Location**            |  **Function** | **Data type**           | **Description**                                                             |
+| byte[0]                 | Led mode      | bit[0,1]                | 0: normal<br>1: left<br>2: right<br>3: error                                |
+|                         |               | bit[2,3]                | 0: off<br>1: auto<br>2: manual<br>3: custom (bypass)                        |
+|                         |               | bit[4,5]                | Reserve                                                                     |
+|                         |               | bit[6,7]                | Reserve                                                                     |
 | byte[1]                 | Effect        | unsigned int            | 0: Solid<br>1: Pulse<br>2: Rainbow<br>3: ColorCycle<br>4: Blink<br>5: Comet |
-| byte[2]                 | Reserve       | _                       | 0x00                                   |
-| byte[3]                 | Reserve       | _                       | 0x00                                   |
-| byte[4]                 | Reserve       | _                       | 0x00                                   |
-| byte[5]                 | Reserve       | _                       | 0x00                                   |
-| byte[6]                 | Reserve       | _                       | 0x00                                   |
-| byte[7]                 | Reserve       | _                       | 0x00                                   |
+| byte[2]                 | Reserve       | _                       | 0x00                                                                        |
+| byte[3]                 | Reserve       | _                       | 0x00                                                                        |
+| byte[4]                 | Reserve       | _                       | 0x00                                                                        |
+| byte[5]                 | Reserve       | _                       | 0x00                                                                        |
+| byte[6]                 | Reserve       | _                       | 0x00                                                                        |
+| byte[7]                 | Reserve       | _                       | 0x00                                                                        |
 # Led Strip Configuration Frame
+
 | **ID package**         | **Cycle(ms)** | **Receive-timeout(ms)** | **Data length** |
 |:----------------------:|:-------------:|:-----------------------:|:---------------:|
 | 0x02                   | -             | -                       | 0x08            |
@@ -34,4 +35,4 @@ Control WS2812 LED strip with STM32F103
 | byte[7]                |Led_flag       | unsigned int8           | [0,255]         |
 
 # Feedback
-![Screenshot 2024-03-04 223517](https://github.com/WanL0q/LED_Strip_WS2812/assets/134664967/dbb2dc3b-917b-4f86-80ce-f7147a7d399d)
+
