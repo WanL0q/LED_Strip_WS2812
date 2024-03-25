@@ -96,7 +96,7 @@ void Set_LED(int LEDnum, int Red, int Green, int Blue){
 	LED_Data[LEDnum][3] = Blue;
 }
 void WS2812_Send(){
-	uint32_t indx1=0, indx2=0;
+	uint32_t indx1=0;//, indx2=0;
 	uint32_t color;
 	uint16_t num_led =0;
 	for (int i = 0; i < 7; i++) num_led += numLEDs[i];
@@ -502,7 +502,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		if (datacheck == 1){
-			mode = (RxData[0] << 8) | RxData[1];
+			mode = (RxData[1] << 8) | RxData[0];
 			if (mode != pre_mode) {
 				for(uint8_t i=0;i<8;i++) effStep[i]=0; 
 				pre_mode = mode;
