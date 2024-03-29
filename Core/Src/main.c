@@ -47,6 +47,7 @@
 CAN_HandleTypeDef hcan;
 
 TIM_HandleTypeDef htim1;
+TIM_HandleTypeDef htim2;
 DMA_HandleTypeDef hdma_tim1_ch1;
 DMA_HandleTypeDef hdma_tim1_ch2;
 
@@ -59,6 +60,7 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_TIM1_Init(void);
 static void MX_CAN_Init(void);
+static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -444,6 +446,17 @@ void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan){
 	}
 	else if (RxHeader.DLC == 8 && RxHeader.ExtId == 0x0000022A)	datacheck = 2;
 }
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)		// The program serves the TIM9 interrupt
+{
+	if (htim->Instance == TIM2)
+	{	
+			for(uint8_t i=0;i<2;i++) TxData1[i]=data[i];
+			for(uint8_t i=0;i<8;i++) TxData2[i]=numLEDs[i];
+			HAL_CAN_AddTxMessage(&hcan, &TxHeader1, TxData1, &TxMailbox1);
+			HAL_CAN_AddTxMessage(&hcan, &TxHeader2, TxData2, &TxMailbox2);
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -477,10 +490,12 @@ int main(void)
   MX_DMA_Init();
   MX_TIM1_Init();
   MX_CAN_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 	HAL_CAN_Start(&hcan);
 
   HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO1_MSG_PENDING);
+	
 	TxHeader1.DLC = 2;
   TxHeader1.IDE = CAN_ID_EXT;
   TxHeader1.RTR = CAN_RTR_DATA;
@@ -492,6 +507,7 @@ int main(void)
   TxHeader2.ExtId = 0x00112A;
 	
 	Flash_Read_String(numLEDs,_PAGE_127_,8);
+	HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -510,17 +526,13 @@ int main(void)
 			datacheck = 0;
 		}
 		else if (datacheck == 2){
-			//for(uint8_t i=0;i<8;i++) numLEDs[i]=RxData[i];
 			Flash_Write_String(RxData,_PAGE_127_,8);
 			Flash_Read_String(numLEDs,_PAGE_127_,8);
 			datacheck = 0;
 		}
 		animation(mode);
 		WS2812_Send();
-		for(uint8_t i=0;i<2;i++) TxData1[i]=data[i];
-		for(uint8_t i=0;i<8;i++) TxData2[i]=numLEDs[i];
-		HAL_CAN_AddTxMessage(&hcan, &TxHeader1, TxData1, &TxMailbox1);
-		HAL_CAN_AddTxMessage(&hcan, &TxHeader2, TxData2, &TxMailbox2);
+		
   }
   /* USER CODE END 3 */
 }
@@ -690,6 +702,51 @@ static void MX_TIM1_Init(void)
 
   /* USER CODE END TIM1_Init 2 */
   HAL_TIM_MspPostInit(&htim1);
+
+}
+
+/**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 7199;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 999;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
 
 }
 

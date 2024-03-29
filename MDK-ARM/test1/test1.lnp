@@ -1,9 +1,9 @@
 --cpu Cortex-M3
 "test1\startup_stm32f103xb.o"
+"test1\flash.o"
 "test1\main.o"
 "test1\stm32f1xx_it.o"
 "test1\stm32f1xx_hal_msp.o"
-"test1\flash.o"
 "test1\stm32f1xx_hal_gpio_ex.o"
 "test1\stm32f1xx_hal_can.o"
 "test1\stm32f1xx_hal.o"

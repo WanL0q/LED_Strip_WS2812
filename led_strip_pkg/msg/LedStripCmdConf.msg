@@ -1,9 +1,0 @@
-std_msgs/Header header 
-uint8 num_front_left 	
-uint8 num_front_right 
-uint8 num_right 
-uint8 num_back_right
-uint8 num_back
-uint8 num_back_left
-uint8 num_left
-uint8 num_flag  	
