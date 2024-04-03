@@ -279,16 +279,17 @@ void animation(uint16_t mode){
     }
     else if (((mode & 0x000C)>>2)==1){  //Auto
       if((mode & 0x0003)==0){   //Normal
-        Solid(0,color_White); Solid(1,color_White); Solid(3,color_White); Solid(5,color_White);
-				Solid(2,color_Auto); Solid(4,color_Auto); Solid(6,color_Auto); Solid(7,color_Auto);
+        /*Solid(0,color_White); Solid(1,color_White); Solid(3,color_White); Solid(5,color_White);
+				Solid(2,color_Auto); Solid(4,color_Auto); Solid(6,color_Auto); Solid(7,color_Auto);*/
+				for (int i = 0; i < 8; i++) Solid(i,color_Auto);
       }
       else if((mode & 0x0003)==1){   //Left
-        Blink(0,300,300,color_Turn,color_Off); Solid(1,color_White); Solid(2,color_Auto); Solid(3,color_White); 
-				Turn_Left(4,color_Auto); Blink(5,300,300,color_Turn,color_Off); Blink(6,300,300,color_Turn,color_Off); Solid(7,color_Auto);
+        Blink(0,300,300,color_Turn,color_Auto); Solid(1,color_Auto); Solid(2,color_Auto); Solid(3,color_Auto); 
+				Turn_Left(4,color_Auto); Blink(5,300,300,color_Turn,color_Auto); Blink(6,300,300,color_Turn,color_Auto); Solid(7,color_Auto);
       }
       else if((mode & 0x0003)==2){   //Right
-        Solid(0,color_White); Blink(1,300,300,color_Turn,color_Off); Blink(2,300,300,color_Turn,color_Off); Blink(3,300,300,color_Turn,color_Off); 
-				Turn_Right(4,color_Auto); Solid(5,color_White); Solid(6,color_Auto); Solid(7,color_Auto);
+        Solid(0,color_Auto); Blink(1,300,300,color_Turn,color_Auto); Blink(2,300,300,color_Turn,color_Auto); Blink(3,300,300,color_Turn,color_Auto); 
+				Turn_Right(4,color_Auto); Solid(5,color_Auto); Solid(6,color_Auto); Solid(7,color_Auto);
       }
       else if((mode & 0x0003)==3){   //Error
         for(uint8_t i=0;i<8;i++) Blink(i,300,300,color_Error,color_Auto);
@@ -296,16 +297,17 @@ void animation(uint16_t mode){
     }
     else if (((mode & 0x000C)>>2)==2){  //Manual
       if((mode & 0x0003)==0){   //Normal
-        Solid(0,color_White); Solid(1,color_White); Solid(3,color_White); Solid(5,color_White);
-				Solid(2,color_Manual); Solid(4,color_Manual); Solid(6,color_Manual); Solid(7,color_Manual);
+        /*Solid(0,color_White); Solid(1,color_White); Solid(3,color_White); Solid(5,color_White);
+				Solid(2,color_Manual); Solid(4,color_Manual); Solid(6,color_Manual); Solid(7,color_Manual);*/
+				for (int i = 0; i < 8; i++) Solid(i,color_Manual);
       }
       else if((mode & 0x0003)==1){   //Left
-        Blink(0,300,300,color_Turn,color_Off); Solid(1,color_White); Solid(2,color_Manual); Solid(3,color_White); Turn_Left(4,color_Manual);
-				Blink(5,300,300,color_Turn,color_Off); Blink(6,300,300,color_Turn,color_Off); Solid(7,color_Manual);
+        Blink(0,300,300,color_Turn,color_Manual); Solid(1,color_Manual); Solid(2,color_Manual); Solid(3,color_Manual); Turn_Left(4,color_Manual);
+				Blink(5,300,300,color_Turn,color_Manual); Blink(6,300,300,color_Turn,color_Manual); Solid(7,color_Manual);
       }
       else if((mode & 0x0003)==2){   //Right
-        Solid(0,color_White); Blink(1,300,300,color_Turn,color_Off); Blink(2,300,300,color_Turn,color_Off); Blink(3,300,300,color_Turn,color_Off); 
-				Turn_Right(4,color_Manual); Solid(5,color_White); Solid(6,color_Manual); Solid(7,color_Manual);
+        Solid(0,color_Manual); Blink(1,300,300,color_Turn,color_Manual); Blink(2,300,300,color_Turn,color_Manual); Blink(3,300,300,color_Turn,color_Manual); 
+				Turn_Right(4,color_Manual); Solid(5,color_Manual); Solid(6,color_Manual); Solid(7,color_Manual);
       }
       else if((mode & 0x0003)==3){   //Error
         for(uint8_t i=0;i<8;i++) Blink(i,300,300,color_Error,color_Manual);
@@ -314,116 +316,113 @@ void animation(uint16_t mode){
     else if (((mode&0x000C)>>2)==3){  //Solid
       Solid(4,color_White);  Solid(7,color_White);
       if((mode & 0x0003)==0){   //Normal
-        Solid(0,color_White); Solid(1,color_White); Solid(2,color_White); Solid(3,color_White);
-        Solid(5,color_White); Solid(6,color_White);
+				for (int i = 0; i < 8; i++) Solid(i,color_White);
       }
       else if((mode & 0x0003)==1){   //Left
-        Blink(0,300,300,color_Turn,color_Off); Solid(1,color_White); Solid(2,color_White); Solid(3,color_White); 
-        Blink(5,300,300,color_Turn,color_Off); Blink(6,300,300,color_Turn,color_Off);
+        Blink(0,300,300,color_Turn,color_White); Solid(1,color_White); Solid(2,color_White); Solid(3,color_White); Turn_Left(4, color_White);
+        Blink(5,300,300,color_Turn,color_White); Blink(6,300,300,color_Turn,color_White); Solid(7,color_White);
       }
       else if((mode & 0x0003)==2){   //Right
-        Solid(0,color_White); Blink(1,300,300,color_Turn,color_Off); Blink(2,300,300,color_Turn,color_Off); Blink(3,300,300,color_Turn,color_Off);
-        Solid(5,color_White); Solid(6,color_White);
+        Solid(0,color_White); Blink(1,300,300,color_Turn,color_White); Blink(2,300,300,color_Turn,color_White); Blink(3,300,300,color_Turn,color_White);
+				Turn_Right(4, color_White); Solid(5,color_White); Solid(6,color_White); Solid(7,color_White);
       }
       else if((mode & 0x0003)==3){   //Error
-        Blink(0,300,300,color_Error,color_Off); Blink(1,300,300,color_Error,color_Off); Solid(2,color_White);
-        Blink(3,300,300,color_Error,color_Off); Blink(5,300,300,color_Error,color_Off); Solid(6,color_White);
+        for(uint8_t i=0;i<8;i++) Blink(i,300,300,color_Error,color_White);
       }
     }      
   }
   else if((mode >> 8)==1 && ((mode & 0x000C)>>2)==3){  //Custom1: Pulse
-    Pulse(4,1,color_White); Pulse(7,1,color_White);
+    ////Pulse(4,1,color_White); Pulse(7,1,color_White);
       if((mode & 0x0003)==0){   //Normal
-        Solid(0,color_White); Solid(1,color_White); Pulse(2,1,color_White); Solid(3,color_White);
-        Solid(5,color_White); Pulse(6,1,color_White);
+        for (int i = 0; i < 8; i++) Pulse(i,1,color_White);
       }
       else if((mode & 0x0003)==1){   //Left
-        Blink(0,300,300,color_Turn,color_Off); Solid(1,color_White); Pulse(2,1,color_White); Solid(3,color_White); 
-        Blink(5,300,300,color_Turn,color_Off); Blink(6,300,300,color_Turn,color_Off);
+        Blink(0,100,100,color_Turn,color_White); Pulse(1,1,color_White); Pulse(2,1,color_White); Pulse(3,1,color_White); 
+				Pulse(4,1,color_White); Blink(5,100,100,color_Turn,color_White); Blink(6,100,100,color_Turn,color_White); Pulse(7,1,color_White);
       }
       else if((mode & 0x0003)==2){   //Right
-        Solid(0,color_White); Blink(1,300,300,color_Turn,color_Off); Blink(2,300,300,color_Turn,color_Off); Blink(3,300,300,color_Turn,color_Off);
-        Solid(5,color_White); Pulse(6,1,color_White);
+        Pulse(0,1,color_White); Blink(1,100,100,color_Turn,color_White); Blink(2,100,100,color_Turn,color_White); Blink(3,100,100,color_Turn,color_White);
+				Pulse(4,1,color_White); Pulse(5,1,color_White); Pulse(6,1,color_White); Pulse(7,1,color_White);
       }
       else if((mode & 0x0003)==3){   //Error
-        Blink(0,300,300,color_Error,color_Off); Blink(1,300,300,color_Error,color_Off); Pulse(2,1,color_White);
-        Blink(3,300,300,color_Error,color_Off); Blink(5,300,300,color_Error,color_Off); Pulse(6,1,color_White);      
+        Blink(0,100,100,color_Error,color_Off); Blink(1,100,100,color_Error,color_Off); Pulse(2,1,color_White); Blink(3,100,100,color_Error,color_Off);
+				Pulse(4,1,color_White); Blink(5,100,100,color_Error,color_Off); Pulse(6,1,color_White); Blink(7,100,100,color_Error,color_Off);
       }
   }
   else if((mode >> 8) == 2 && ((mode & 0x000C)>>2)==3){  //Custom2: Rainbow
-    Rainbow(4); Rainbow(7);
+    Rainbow(4); 
       if((mode & 0x0003)==0){   //Normal
         Solid(0,color_White); Solid(1,color_White); Rainbow(2); Solid(3,color_White);
-        Solid(5,color_White); Rainbow(6);
+        Solid(5,color_White); Rainbow(6); Rainbow(7);
       }
       else if((mode & 0x0003)==1){   //Left
-        Blink(0,300,300,color_Turn,color_Off); Solid(1,color_White); Rainbow(2); Solid(3,color_White); 
-        Blink(5,300,300,color_Turn,color_Off); Blink(6,300,300,color_Turn,color_Off);
+        Blink(0,300,300,color_Turn,color_White); Solid(1,color_White); Rainbow(2); Solid(3,color_White); 
+        Blink(5,300,300,color_Turn,color_White); Blink(6,300,300,color_Turn,color_White); Rainbow(7);
       }
       else if((mode & 0x0003)==2){   //Right
-        Solid(0,color_White); Blink(1,300,300,color_Turn,color_Off); Blink(2,300,300,color_Turn,color_Off); Blink(3,300,300,color_Turn,color_Off);
-        Solid(5,color_White); Rainbow(6);
+        Solid(0,color_White); Blink(1,300,300,color_Turn,color_White); Blink(2,300,300,color_Turn,color_White); Blink(3,300,300,color_Turn,color_White);
+        Solid(5,color_White); Rainbow(6); Rainbow(7);
       }
       else if((mode & 0x0003)==3){   //Error
         Blink(0,300,300,color_Error,color_Off); Blink(1,300,300,color_Error,color_Off); Rainbow(2);
-        Blink(3,300,300,color_Error,color_Off); Blink(5,300,300,color_Error,color_Off); Rainbow(6);      
+        Blink(3,300,300,color_Error,color_Off); Blink(5,300,300,color_Error,color_Off); Rainbow(6); Blink(7,300,300,color_Error,color_Off);   
       }
   }
   else if((mode >> 8) == 3 && ((mode & 0x000C)>>2)==3){  //Custom3: ColorCycle
-    colorCycle(4);colorCycle(7);
+    colorCycle(4);
       if((mode & 0x0003)==0){   //Normal
         Solid(0,color_White); Solid(1,color_White); colorCycle(2); Solid(3,color_White);
-        Solid(5,color_White); colorCycle(6);
+        Solid(5,color_White); colorCycle(6); colorCycle(7);
       }
       else if((mode & 0x0003)==1){   //Left
-        Blink(0,300,300,color_Turn,color_Off); Solid(1,color_White); colorCycle(2); Solid(3,color_White); 
-        Blink(5,300,300,color_Turn,color_Off); Blink(6,300,300,color_Turn,color_Off);
+        Blink(0,300,300,color_Turn,color_White); Solid(1,color_White); colorCycle(2); Solid(3,color_White); 
+        Blink(5,300,300,color_Turn,color_White); Blink(6,300,300,color_Turn,color_White); colorCycle(7);
       }
       else if((mode & 0x0003)==2){   //Right
-        Solid(0,color_White); Blink(1,300,300,color_Turn,color_Off); Blink(2,300,300,color_Turn,color_Off); Blink(3,300,300,color_Turn,color_Off);
-        Solid(5,color_White); colorCycle(6);
+        Solid(0,color_White); Blink(1,300,300,color_Turn,color_White); Blink(2,300,300,color_Turn,color_White); Blink(3,300,300,color_Turn,color_White);
+        Solid(5,color_White); colorCycle(6); colorCycle(7);
       }
       else if((mode & 0x0003)==3){   //Error
-        Blink(0,300,300,color_Error,color_Off); Blink(1,300,300,color_Error,color_Off); colorCycle(2);
-        Blink(3,300,300,color_Error,color_Off); Blink(5,300,300,color_Error,color_Off); colorCycle(6);   
+        Blink(0,300,300,color_Error,color_White); Blink(1,300,300,color_Error,color_White); colorCycle(2);
+        Blink(3,300,300,color_Error,color_White); Blink(5,300,300,color_Error,color_White); colorCycle(6);  Blink(7,300,300,color_Error,color_White);
       }
   }
   else if((mode >> 8) == 4 && ((mode & 0x000C)>>2)==3){  //Custom4: Blink
-    Blink(4,300,300,color_White,color_Off); Blink(7,300,300,color_White,color_Off);
+    Blink(4,300,300,color_White,color_Off); 
 		if((mode & 0x0003)==0){   //Normal
         Solid(0,color_White); Solid(1,color_White); Blink(2,300,300,color_White,color_Off); Solid(3,color_White);
-        Solid(5,color_White); Blink(6,300,300,color_White,color_Off);
+        Solid(5,color_White); Blink(6,300,300,color_White,color_Off); Blink(7,300,300,color_White,color_Off);
       }
       else if((mode & 0x0003)==1){   //Left
         Blink(0,300,300,color_Turn,color_Off); Solid(1,color_White); Blink(2,300,300,color_White,color_Off); Solid(3,color_White); 
-        Blink(5,300,300,color_Turn,color_Off); Blink(6,300,300,color_Turn,color_Off);
+        Blink(5,300,300,color_Turn,color_Off); Blink(6,300,300,color_Turn,color_Off); Blink(7,300,300,color_White,color_Off);
       }
       else if((mode & 0x0003)==2){   //Right
         Solid(0,color_White); Blink(1,300,300,color_Turn,color_Off); Blink(2,300,300,color_Turn,color_Off); Blink(3,300,300,color_Turn,color_Off);
-        Solid(5,color_White); Blink(6,300,300,color_White,color_Off);
+        Solid(5,color_White); Blink(6,300,300,color_White,color_Off); Blink(7,300,300,color_White,color_Off);
       }
       else if((mode & 0x0003)==3){   //Error
         Blink(0,300,300,color_Error,color_Off); Blink(1,300,300,color_Error,color_Off); Blink(2,300,300,color_White,color_Off);
-        Blink(3,300,300,color_Error,color_Off); Blink(5,300,300,color_Error,color_Off); Blink(6,300,300,color_White,color_Off);
+        Blink(3,300,300,color_Error,color_Off); Blink(5,300,300,color_Error,color_Off); Blink(6,300,300,color_White,color_Off); Blink(7,300,300,color_Error,color_Off);
       }
   }
 	else if((mode >> 8) == 5 && ((mode & 0x000C)>>2)==3){  //Custom5: Comet
-    Comet(4,1,color_White); Comet(7,1,color_White);
+    Comet(4,1,color_White); 
 		if((mode & 0x0003)==0){   //Normal
         Solid(0,color_White); Solid(1,color_White); Comet(2,1,color_White); Solid(3,color_White);
-        Solid(5,color_White); Comet(6,1,color_White);
+        Solid(5,color_White); Comet(6,1,color_White); Comet(7,1,color_White);
       }
       else if((mode & 0x0003)==1){   //Left
         Blink(0,300,300,color_Turn,color_Off); Solid(1,color_White); Comet(2,1,color_White); Solid(3,color_White); 
-        Blink(5,300,300,color_Turn,color_Off); Blink(6,300,300,color_Turn,color_Off);
+        Blink(5,300,300,color_Turn,color_Off); Blink(6,300,300,color_Turn,color_Off); Comet(7,1,color_White);
       }
       else if((mode & 0x0003)==2){   //Right
         Solid(0,color_White); Blink(1,300,300,color_Turn,color_Off); Blink(2,300,300,color_Turn,color_Off); Blink(3,300,300,color_Turn,color_Off);
-        Solid(5,color_White); Comet(6,1,color_White);
+        Solid(5,color_White); Comet(6,1,color_White); Comet(7,1,color_White);
       }
       else if((mode & 0x0003)==3){   //Error
         Blink(0,300,300,color_Error,color_Off); Blink(1,300,300,color_Error,color_Off); Comet(2,1,color_White);
-        Blink(3,300,300,color_Error,color_Off); Blink(5,300,300,color_Error,color_Off); Comet(6,1,color_White);
+        Blink(3,300,300,color_Error,color_Off); Blink(5,300,300,color_Error,color_Off); Comet(6,1,color_White); Blink(7,300,300,color_Error,color_Off);
       }
   }
 	else for(uint8_t i=0;i<8;i++) Solid(i,color_Off);
